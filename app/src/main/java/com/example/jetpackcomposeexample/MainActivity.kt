@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.jetpackcomposeexample.OnBoardingScreen.ViewPagerScreen
 import com.example.jetpackcomposeexample.ui.theme.JetpackComposeExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,8 +43,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposeExampleTheme {
+                ViewPagerScreen()
                 // A surface container using the 'background' color from the theme
-                Scaffold(
+             /*   Scaffold(
                     topBar = {
                         TopAppBar(
                             title= {
@@ -76,7 +78,7 @@ class MainActivity : ComponentActivity() {
                 ){
 
                 }
-
+*/
             }
 
         }
