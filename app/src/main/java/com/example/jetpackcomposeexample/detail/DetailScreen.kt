@@ -1,10 +1,12 @@
 package com.example.jetpackcomposeexample.detail
 
+import android.content.Intent
 import android.os.Bundle
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,41 +31,48 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposeexample.R
 import com.example.jetpackcomposeexample.Utils.DataSource
+import com.example.jetpackcomposeexample.Utils.NavigationScreen
+import com.example.jetpackcomposeexample.navigation.NavigationActivity
 import com.example.jetpackcomposeexample.ui.theme.JetpackComposeExampleTheme
 
 class DetailScreen :ComponentActivity(){
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposeExampleTheme {
                 RecyclerViewData(data = getData())
 
-
             }
-
         }
     }
         @Composable
         fun eachRowData(dataSource: DataSource){
-
-
-
-        Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 10.dp)
+            Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 10.dp).clickable {
+                startActivity(Intent(this@DetailScreen,NavigationActivity::class.java))
+            }
             , shape = (RoundedCornerShape(CornerSize(10.dp))),
         ) {
-            Row (modifier = Modifier.padding(10.dp)){
-                Image(painter = painterResource(id = R.drawable.scenary_image),contentDescription = "Image ",
-               modifier = Modifier
-                   .padding(10.dp)
-                   .size(80.dp)
-                   .align(androidx.compose.ui.Alignment.CenterVertically)
-                   .clip(RoundedCornerShape(CornerSize(10.dp))) )
-                Text(text = dataSource.description, modifier = Modifier.padding(10.dp), fontSize = 20.sp)
+                Row(modifier = Modifier.padding(10.dp)) {
+                    Image(
+                        painter = painterResource(id = R.drawable.scenary_image),
+                        contentDescription = "Image ",
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .size(80.dp)
+                            .align(androidx.compose.ui.Alignment.CenterVertically)
+                            .clip(RoundedCornerShape(CornerSize(10.dp)))
+                    )
+                    Text(
+                        text = dataSource.description,
+                        modifier = Modifier.padding(10.dp),
+                        fontSize = 20.sp
+                    )
+
+
+                }
 
             }
-
-        }
-
 
     }
     @Composable
@@ -75,5 +84,7 @@ class DetailScreen :ComponentActivity(){
         }
         
     }
+
+
 
 }

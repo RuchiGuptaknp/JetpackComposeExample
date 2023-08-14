@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposeExample"
         tools:targetApi="31">
+        <activity android:name=".navigation.NavigationActivity"/>
+
         <activity android:name=".login.LoginScreen"/>
         <activity android:name=".detail.DetailScreen"/>
         <activity
